@@ -2,87 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&family=Segoe+UI:wght@400;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 100% 12%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 207 90% 54%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 60% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 30% 25%;
+    --muted-foreground: 210 20% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 70% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 30% 30%;
+    --input: 210 30% 25%;
+    --ring: 207 90% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0px;
+
+    /* Windows XP Theme Colors */
+    --xp-blue-dark: 207 84% 32%;
+    --xp-blue: 207 90% 54%;
+    --xp-blue-light: 207 85% 65%;
+    --xp-green: 142 70% 45%;
+    --xp-silver: 210 20% 88%;
+    --xp-window-bg: 210 40% 94%;
+    --xp-window-header: 207 85% 50%;
+    --xp-taskbar: 210 80% 25%;
+    --xp-start-green: 142 70% 40%;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 210 100% 8%;
+    --foreground: 0 0% 100%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 90%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 90%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 207 90% 54%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 60% 15%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 30% 20%;
+    --muted-foreground: 210 20% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 142 70% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 210 30% 25%;
+    --input: 210 30% 20%;
+    --ring: 207 90% 54%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +104,168 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
   }
+}
+
+/* Windows XP Window Styles */
+.xp-window {
+  background: linear-gradient(180deg, hsl(210 40% 96%) 0%, hsl(210 30% 92%) 100%);
+  border: 2px solid hsl(207 70% 40%);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 
+    2px 2px 10px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.xp-window-header {
+  background: linear-gradient(180deg, 
+    hsl(207 90% 60%) 0%, 
+    hsl(207 85% 50%) 20%, 
+    hsl(207 80% 35%) 100%
+  );
+  border-radius: 6px 6px 0 0;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+}
+
+.xp-window-header:active {
+  cursor: grabbing;
+}
+
+.xp-window-btn {
+  width: 21px;
+  height: 21px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.xp-window-btn-close {
+  background: linear-gradient(180deg, hsl(0 70% 55%) 0%, hsl(0 70% 45%) 100%);
+  border-color: hsl(0 50% 35%);
+  color: white;
+}
+
+.xp-window-btn-close:hover {
+  background: linear-gradient(180deg, hsl(0 80% 60%) 0%, hsl(0 70% 50%) 100%);
+}
+
+.xp-window-btn-minimize {
+  background: linear-gradient(180deg, hsl(207 80% 55%) 0%, hsl(207 70% 45%) 100%);
+  border-color: hsl(207 60% 35%);
+  color: white;
+}
+
+.xp-window-btn-maximize {
+  background: linear-gradient(180deg, hsl(207 80% 55%) 0%, hsl(207 70% 45%) 100%);
+  border-color: hsl(207 60% 35%);
+  color: white;
+}
+
+.xp-taskbar {
+  background: linear-gradient(180deg, 
+    hsl(207 85% 45%) 0%, 
+    hsl(207 80% 35%) 50%,
+    hsl(207 75% 25%) 100%
+  );
+  border-top: 2px solid hsl(207 90% 55%);
+}
+
+.xp-start-btn {
+  background: linear-gradient(180deg, 
+    hsl(142 75% 50%) 0%, 
+    hsl(142 70% 40%) 50%,
+    hsl(142 65% 30%) 100%
+  );
+  border: 1px solid hsl(142 60% 25%);
+  border-radius: 0 12px 12px 0;
+  padding: 4px 16px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.xp-start-btn:hover {
+  background: linear-gradient(180deg, 
+    hsl(142 80% 55%) 0%, 
+    hsl(142 75% 45%) 50%,
+    hsl(142 70% 35%) 100%
+  );
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 80px;
+  text-align: center;
+}
+
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.desktop-icon.selected {
+  background: rgba(100, 150, 255, 0.3);
+  border: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+.desktop-icon-img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 4px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.desktop-icon-text {
+  color: white;
+  font-size: 11px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+/* Scrollbar styling for XP look */
+.xp-scrollbar::-webkit-scrollbar {
+  width: 16px;
+}
+
+.xp-scrollbar::-webkit-scrollbar-track {
+  background: hsl(210 30% 85%);
+  border-left: 1px solid hsl(210 20% 70%);
+}
+
+.xp-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, hsl(207 60% 70%) 0%, hsl(207 50% 55%) 100%);
+  border: 1px solid hsl(207 40% 45%);
+  border-radius: 2px;
+}
+
+.xp-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, hsl(207 70% 75%) 0%, hsl(207 60% 60%) 100%);
+}
+
+/* Modern animated background */
+.desktop-background {
+  background: 
+    radial-gradient(ellipse at 20% 80%, hsl(207 90% 25%) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, hsl(195 80% 20%) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, hsl(210 85% 15%) 0%, transparent 70%),
+    linear-gradient(180deg, hsl(210 100% 12%) 0%, hsl(210 80% 8%) 100%);
 }
