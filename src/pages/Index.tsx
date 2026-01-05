@@ -1,13 +1,17 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from 'react-helmet-async';
+import Desktop from '@/components/WindowsDesktop/Desktop';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Talel Oueslati | Full-Stack Developer Portfolio</title>
+        <meta name="description" content="Talel Oueslati - Full-Stack Developer from Tunisia. Expert in React, Angular, Spring Boot, NestJS. View my projects and experience." />
+        <meta name="keywords" content="Talel Oueslati, Full-Stack Developer, React, Angular, Spring Boot, NestJS, Tunisia" />
+        <link rel="canonical" href="https://talel-oueslati.dev" />
+      </Helmet>
+      <Desktop />
+    </>
   );
 };
 
