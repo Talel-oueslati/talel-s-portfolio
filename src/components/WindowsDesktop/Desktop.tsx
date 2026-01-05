@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Code, Briefcase, FolderOpen, GraduationCap, Mail } from 'lucide-react';
+import { User, Code, Briefcase, FolderOpen, GraduationCap, Mail, Github, Linkedin } from 'lucide-react';
 import DesktopIcon from './DesktopIcon';
 import XPWindow from './XPWindow';
 import Taskbar from './Taskbar';
@@ -9,6 +9,7 @@ import ExperienceWindow from './windows/ExperienceWindow';
 import ProjectsWindow from './windows/ProjectsWindow';
 import EducationWindow from './windows/EducationWindow';
 import ContactWindow from './windows/ContactWindow';
+import talelPhoto from '@/assets/talel-photo.jpg';
 
 interface WindowState {
   id: string;
@@ -21,6 +22,13 @@ interface WindowState {
   defaultSize: { width: number; height: number };
 }
 
+interface SocialLink {
+  id: string;
+  icon: React.ReactNode;
+  label: string;
+  href: string;
+}
+
 const Desktop: React.FC = () => {
   const [windows, setWindows] = useState<WindowState[]>([
     {
@@ -31,7 +39,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 50, y: 30 },
-      defaultSize: { width: 550, height: 380 },
+      defaultSize: { width: 600, height: 420 },
     },
     {
       id: 'skills',
@@ -41,7 +49,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 120, y: 60 },
-      defaultSize: { width: 600, height: 450 },
+      defaultSize: { width: 650, height: 500 },
     },
     {
       id: 'experience',
@@ -51,7 +59,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 180, y: 90 },
-      defaultSize: { width: 550, height: 480 },
+      defaultSize: { width: 600, height: 520 },
     },
     {
       id: 'projects',
@@ -61,7 +69,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 240, y: 50 },
-      defaultSize: { width: 650, height: 450 },
+      defaultSize: { width: 700, height: 500 },
     },
     {
       id: 'education',
@@ -71,7 +79,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 100, y: 80 },
-      defaultSize: { width: 550, height: 500 },
+      defaultSize: { width: 600, height: 540 },
     },
     {
       id: 'contact',
@@ -81,7 +89,7 @@ const Desktop: React.FC = () => {
       isOpen: false,
       zIndex: 1,
       defaultPosition: { x: 300, y: 100 },
-      defaultSize: { width: 450, height: 420 },
+      defaultSize: { width: 500, height: 460 },
     },
   ]);
 
@@ -119,12 +127,33 @@ const Desktop: React.FC = () => {
   };
 
   const desktopIcons = [
-    { id: 'about', icon: <User size={32} className="text-cyan-300" />, label: 'About Me' },
-    { id: 'skills', icon: <Code size={32} className="text-green-300" />, label: 'Skills' },
-    { id: 'experience', icon: <Briefcase size={32} className="text-yellow-300" />, label: 'Experience' },
-    { id: 'projects', icon: <FolderOpen size={32} className="text-orange-300" />, label: 'Projects' },
-    { id: 'education', icon: <GraduationCap size={32} className="text-purple-300" />, label: 'Education' },
-    { id: 'contact', icon: <Mail size={32} className="text-pink-300" />, label: 'Contact' },
+    { id: 'about', icon: <User size={32} className="text-primary" />, label: 'About Me' },
+    { id: 'skills', icon: <Code size={32} className="text-accent" />, label: 'Skills' },
+    { id: 'experience', icon: <Briefcase size={32} className="text-amber-400" />, label: 'Experience' },
+    { id: 'projects', icon: <FolderOpen size={32} className="text-orange-400" />, label: 'Projects' },
+    { id: 'education', icon: <GraduationCap size={32} className="text-violet-400" />, label: 'Education' },
+    { id: 'contact', icon: <Mail size={32} className="text-pink-400" />, label: 'Contact' },
+  ];
+
+  const socialLinks: SocialLink[] = [
+    { 
+      id: 'github', 
+      icon: <Github size={32} className="text-foreground" />, 
+      label: 'GitHub',
+      href: 'https://github.com/Talel-oueslati'
+    },
+    { 
+      id: 'linkedin', 
+      icon: <Linkedin size={32} className="text-blue-400" />, 
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/talel-oueslati-3a4b5425a/'
+    },
+    { 
+      id: 'email', 
+      icon: <Mail size={32} className="text-red-400" />, 
+      label: 'Gmail',
+      href: 'mailto:taleloueslati3@gmail.com'
+    },
   ];
 
   const openWindowsList = windows.filter((w) => w.isOpen).map((w) => ({
@@ -135,8 +164,15 @@ const Desktop: React.FC = () => {
 
   return (
     <div className="h-screen w-screen overflow-hidden desktop-background relative">
-      {/* Desktop Icons */}
-      <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+      {/* Profile Photo in Background */}
+      <img 
+        src={talelPhoto} 
+        alt="" 
+        className="profile-bg-photo"
+      />
+
+      {/* Desktop Icons - Left Side */}
+      <div className="absolute top-6 left-6 flex flex-col gap-1 z-10">
         {desktopIcons.map((icon) => (
           <DesktopIcon
             key={icon.id}
@@ -144,6 +180,24 @@ const Desktop: React.FC = () => {
             label={icon.label}
             onClick={() => openWindow(icon.id)}
           />
+        ))}
+      </div>
+
+      {/* Social Links - Right Side */}
+      <div className="absolute top-6 right-6 flex flex-col gap-1 z-10">
+        {socialLinks.map((link) => (
+          <a
+            key={link.id}
+            href={link.href}
+            target={link.href.startsWith('mailto') ? undefined : '_blank'}
+            rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            className="social-icon-btn"
+          >
+            <div className="desktop-icon-img flex items-center justify-center">
+              {link.icon}
+            </div>
+            <span className="desktop-icon-text">{link.label}</span>
+          </a>
         ))}
       </div>
 
