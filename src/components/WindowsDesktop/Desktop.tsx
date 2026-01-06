@@ -126,31 +126,36 @@ const Desktop: React.FC = () => {
     setActiveWindow(id);
   };
 
-  const desktopIcons = [
-    { id: 'about', icon: <User size={32} className="text-primary" />, label: 'About Me' },
-    { id: 'skills', icon: <Code size={32} className="text-accent" />, label: 'Skills' },
-    { id: 'experience', icon: <Briefcase size={32} className="text-amber-400" />, label: 'Experience' },
-    { id: 'projects', icon: <FolderOpen size={32} className="text-orange-400" />, label: 'Projects' },
-    { id: 'education', icon: <GraduationCap size={32} className="text-violet-400" />, label: 'Education' },
-    { id: 'contact', icon: <Mail size={32} className="text-pink-400" />, label: 'Contact' },
+  // Row 1: Main app icons
+  const desktopIconsRow1 = [
+    { id: 'about', icon: <User size={36} className="text-cyan-400" />, label: 'About Me' },
+    { id: 'skills', icon: <Code size={36} className="text-emerald-400" />, label: 'Skills' },
+    { id: 'experience', icon: <Briefcase size={36} className="text-amber-400" />, label: 'Experience' },
+  ];
+
+  // Row 2: More app icons + social links
+  const desktopIconsRow2 = [
+    { id: 'projects', icon: <FolderOpen size={36} className="text-orange-400" />, label: 'Projects' },
+    { id: 'education', icon: <GraduationCap size={36} className="text-violet-400" />, label: 'Education' },
+    { id: 'contact', icon: <Mail size={36} className="text-rose-400" />, label: 'Contact' },
   ];
 
   const socialLinks: SocialLink[] = [
     { 
       id: 'github', 
-      icon: <Github size={32} className="text-foreground" />, 
+      icon: <Github size={36} className="text-slate-300" />, 
       label: 'GitHub',
       href: 'https://github.com/Talel-oueslati'
     },
     { 
       id: 'linkedin', 
-      icon: <Linkedin size={32} className="text-blue-400" />, 
+      icon: <Linkedin size={36} className="text-sky-400" />, 
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/talel-oueslati-3a4b5425a/'
     },
     { 
       id: 'email', 
-      icon: <Mail size={32} className="text-red-400" />, 
+      icon: <Mail size={36} className="text-red-400" />, 
       label: 'Gmail',
       href: 'mailto:taleloueslati3@gmail.com'
     },
@@ -165,40 +170,59 @@ const Desktop: React.FC = () => {
   return (
     <div className="h-screen w-screen overflow-hidden desktop-background relative">
       {/* Profile Photo in Background */}
-      <img 
-        src={talelPhoto} 
-        alt="" 
-        className="profile-bg-photo"
-      />
-
-      {/* Desktop Icons - Left Side */}
-      <div className="absolute top-6 left-6 flex flex-col gap-1 z-10">
-        {desktopIcons.map((icon) => (
-          <DesktopIcon
-            key={icon.id}
-            icon={icon.icon}
-            label={icon.label}
-            onClick={() => openWindow(icon.id)}
+      <div className="profile-photo-container">
+        <div className="profile-photo-wrapper">
+          <img 
+            src={talelPhoto} 
+            alt="Talel Oueslati" 
+            className="profile-bg-photo"
           />
-        ))}
+        </div>
       </div>
 
-      {/* Social Links - Right Side */}
-      <div className="absolute top-6 right-6 flex flex-col gap-1 z-10">
-        {socialLinks.map((link) => (
-          <a
-            key={link.id}
-            href={link.href}
-            target={link.href.startsWith('mailto') ? undefined : '_blank'}
-            rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            className="social-icon-btn"
-          >
-            <div className="desktop-icon-img flex items-center justify-center">
-              {link.icon}
-            </div>
-            <span className="desktop-icon-text">{link.label}</span>
-          </a>
-        ))}
+      {/* Desktop Icons Grid - Top Left */}
+      <div className="absolute top-6 left-6 z-10 flex gap-8">
+        {/* Column 1 */}
+        <div className="flex flex-col gap-2">
+          {desktopIconsRow1.map((icon) => (
+            <DesktopIcon
+              key={icon.id}
+              icon={icon.icon}
+              label={icon.label}
+              onClick={() => openWindow(icon.id)}
+            />
+          ))}
+        </div>
+        
+        {/* Column 2 */}
+        <div className="flex flex-col gap-2">
+          {desktopIconsRow2.map((icon) => (
+            <DesktopIcon
+              key={icon.id}
+              icon={icon.icon}
+              label={icon.label}
+              onClick={() => openWindow(icon.id)}
+            />
+          ))}
+        </div>
+
+        {/* Column 3 - Social Links */}
+        <div className="flex flex-col gap-2">
+          {socialLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              target={link.href.startsWith('mailto') ? undefined : '_blank'}
+              rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+              className="desktop-icon group"
+            >
+              <div className="desktop-icon-img flex items-center justify-center group-hover:scale-110 transition-transform">
+                {link.icon}
+              </div>
+              <span className="desktop-icon-text">{link.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Windows */}
