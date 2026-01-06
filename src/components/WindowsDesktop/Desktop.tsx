@@ -126,17 +126,17 @@ const Desktop: React.FC = () => {
     setActiveWindow(id);
   };
 
-  // Row 1: Main app icons
-  const desktopIconsRow1 = [
+  // Column 1: Main app icons (vertical stack like Windows)
+  const desktopIconsCol1 = [
     { id: 'about', icon: <User size={36} className="text-cyan-400" />, label: 'About Me' },
     { id: 'skills', icon: <Code size={36} className="text-emerald-400" />, label: 'Skills' },
     { id: 'experience', icon: <Briefcase size={36} className="text-amber-400" />, label: 'Experience' },
-  ];
-
-  // Row 2: More app icons + social links
-  const desktopIconsRow2 = [
     { id: 'projects', icon: <FolderOpen size={36} className="text-orange-400" />, label: 'Projects' },
     { id: 'education', icon: <GraduationCap size={36} className="text-violet-400" />, label: 'Education' },
+  ];
+
+  // Column 2: Contact + social links
+  const desktopIconsCol2 = [
     { id: 'contact', icon: <Mail size={36} className="text-rose-400" />, label: 'Contact' },
   ];
 
@@ -181,10 +181,10 @@ const Desktop: React.FC = () => {
       </div>
 
       {/* Desktop Icons Grid - Top Left */}
-      <div className="absolute top-6 left-6 z-10 flex gap-8">
-        {/* Column 1 */}
+      <div className="absolute top-6 left-6 z-10 flex gap-6">
+        {/* Column 1 - Main Apps */}
         <div className="flex flex-col gap-2">
-          {desktopIconsRow1.map((icon) => (
+          {desktopIconsCol1.map((icon) => (
             <DesktopIcon
               key={icon.id}
               icon={icon.icon}
@@ -194,9 +194,9 @@ const Desktop: React.FC = () => {
           ))}
         </div>
         
-        {/* Column 2 */}
+        {/* Column 2 - Contact + Social Links */}
         <div className="flex flex-col gap-2">
-          {desktopIconsRow2.map((icon) => (
+          {desktopIconsCol2.map((icon) => (
             <DesktopIcon
               key={icon.id}
               icon={icon.icon}
@@ -204,10 +204,6 @@ const Desktop: React.FC = () => {
               onClick={() => openWindow(icon.id)}
             />
           ))}
-        </div>
-
-        {/* Column 3 - Social Links */}
-        <div className="flex flex-col gap-2">
           {socialLinks.map((link) => (
             <a
               key={link.id}
