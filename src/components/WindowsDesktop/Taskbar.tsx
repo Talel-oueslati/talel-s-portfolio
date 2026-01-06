@@ -54,8 +54,8 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, activeWindow, onWindowCl
       </div>
 
       {/* System Tray */}
-      <div className="flex items-center gap-2 px-3 h-full bg-primary/20 border-l border-primary/30">
-        <span className="text-primary-foreground text-xs">
+      <div className="flex items-center gap-3 px-4 h-full bg-slate-900/80 border-l border-cyan-500/30 rounded-l-lg">
+        <span className="text-cyan-300 text-sm font-medium tracking-wide">
           {formatTime(currentTime)}
         </span>
       </div>
