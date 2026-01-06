@@ -357,13 +357,13 @@
 
 /* Skill Badge */
 .skill-badge {
-  background: hsl(200 70% 50% / 0.15);
-  border: 1px solid hsl(200 60% 50% / 0.3);
+  background: hsla(182, 85%, 62%, 0.15);
+  border: 1px solid hsl(200, 100%, 50%);
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: hsl(200 80% 75%);
+  color: hsl(0, 0%, 0%);
   transition: all 0.2s ease;
 }
 
