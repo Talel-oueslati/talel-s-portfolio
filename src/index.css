@@ -340,18 +340,19 @@
 
 /* Glass Card Effect */
 .glass-card {
-  background: linear-gradient(145deg, hsl(215 30% 22%) 0%, hsl(220 35% 16%) 100%);
+  background: hsl(0 0% 98%);
   backdrop-filter: blur(12px);
-  border: 1px solid hsl(200 60% 50% / 0.25);
+  border: 1px solid hsl(220 20% 85%);
   border-radius: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 32px hsl(220 50% 5% / 0.4);
+  box-shadow: 0 8px 32px hsl(220 50% 5% / 0.15);
+  color: hsl(220 30% 15%);
 }
 
 .glass-card:hover {
   border-color: hsl(200 60% 50% / 0.4);
   transform: translateY(-3px);
-  box-shadow: 0 16px 48px hsl(220 50% 5% / 0.5);
+  box-shadow: 0 16px 48px hsl(220 50% 5% / 0.25);
 }
 
 /* Skill Badge */
