@@ -20,6 +20,15 @@ const ProjectsWindow: React.FC = () => {
 
   const projects: Project[] = [
     {
+      title: 'Mobile Developer Internship App',
+      description: 'Hybrid mobile application development with passport scanning & OCR integration',
+      tech: ['Spring Boot', 'Ionic', 'Oracle', 'Angular'],
+      videos: [
+        { label: 'Demo', src: '/assets/mobile-app-demo.mp4' }
+      ],
+      color: 'from-violet-500 to-purple-500',
+    },
+    {
       title: 'Automated Resume Screening System',
       description: 'CV analysis & candidate shortlisting application with intelligent parsing and scoring algorithms',
       tech: ['NestJS', 'Angular', 'TypeScript'],
@@ -33,7 +42,7 @@ const ProjectsWindow: React.FC = () => {
       description: 'Complete hotel booking and management platform with real-time availability tracking',
       tech: ['Spring Boot', 'Thymeleaf', 'Oracle'],
       videos: [
-        { label: 'Demo', src: '/assets/demo application-static prj.mp4' }
+        { label: 'Demo', src: '/assets/hotel-demo.mp4' }
       ],
       color: 'from-amber-500 to-orange-500',
     },
@@ -42,7 +51,17 @@ const ProjectsWindow: React.FC = () => {
       description: 'Personal movie tracker with smart recommendations powered by TMDB API integration',
       tech: ['Ionic', 'React', 'Firebase', 'TMDB API'],
       videos: [
-        { label: 'Running Demo', src: '/assets/jmv runing demo.mp4' }
+        { label: 'Demo', src: '/assets/movie-app-demo.mp4' }
+      ],
+      color: 'from-violet-500 to-purple-500',
+    },
+    {
+      title: 'Full-stack web app for JVM static analysis',
+      description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
+      tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
+      videos: [
+        { label: 'Running Demo', src: '/assets/jmv runing demo.mp4' },
+        { label: 'Static Analysis', src: '/assets/demo application-static prj.mp4' }
       ],
       color: 'from-violet-500 to-purple-500',
     },
