@@ -30,7 +30,6 @@ const ProjectsWindow: React.FC = () => {
       title: 'Mobile Developer Internship App',
       description: 'Hybrid mobile application development with passport scanning & OCR integration',
       tech: ['Spring Boot', 'Ionic', 'Oracle', ' Angular'],
-      videoUrl: 'demo',
       color: 'from-violet-500 to-purple-500',
     },
     {
@@ -83,7 +82,6 @@ const ProjectsWindow: React.FC = () => {
       title: 'Full-stack web app for JVM static analysis',
       description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
       tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
-      videoUrl: 'demo',
       color: 'from-violet-500 to-purple-500',
     },
     {
