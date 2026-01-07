@@ -14,6 +14,13 @@ const ProjectsWindow: React.FC = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
+     {
+      title: 'Mobile Developer Internship App',
+      description: 'Hybrid mobile application development with passport scanning & OCR integration',
+      tech: ['Spring Boot', 'Ionic', 'Oracle', ' Angular'],
+      videoUrl: 'demo',
+      color: 'from-violet-500 to-purple-500',
+    },
     {
       title: 'Automated Resume Screening System',
       description: 'CV analysis & candidate shortlisting application with intelligent parsing and scoring algorithms',
@@ -32,6 +39,13 @@ const ProjectsWindow: React.FC = () => {
       title: 'Movie Playlist & Recommendation App',
       description: 'Personal movie tracker with smart recommendations powered by TMDB API integration',
       tech: ['Ionic', 'React', 'Firebase', 'TMDB API'],
+      videoUrl: 'demo',
+      color: 'from-violet-500 to-purple-500',
+    },
+        {
+      title: 'Full-stack web app for JVM static analysis',
+      description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
+      tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
       videoUrl: 'demo',
       color: 'from-violet-500 to-purple-500',
     },
