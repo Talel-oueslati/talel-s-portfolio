@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Play, X, ExternalLink, Code2, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Import videos from assets
+import jvmRunningDemo from '@/assets/jmv runing demo.mp4';
+import staticProjectDemo from '@/assets/demo application-static prj.mp4';
+import resumeScreeningDemo from '@/assets/Automated-Resume-Screening-Candidate-Shortlisting-Web-App demo.mp4';
+import media1 from '@/assets/media1.mp4';
+import media2 from '@/assets/media2.mp4';
+
 interface ProjectVideo {
   label: string;
   src: string;
@@ -19,19 +26,12 @@ const ProjectsWindow: React.FC = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const projects: Project[] = [
-     {
-      title: 'Mobile Developer Internship App',
-      description: 'Hybrid mobile application development with passport scanning & OCR integration',
-      tech: ['Spring Boot', 'Ionic', 'Oracle', ' Angular'],
-      videoUrl: 'demo',
-      color: 'from-violet-500 to-purple-500',
-    },
     {
       title: 'Mobile Developer Internship App',
       description: 'Hybrid mobile application development with passport scanning & OCR integration',
       tech: ['Spring Boot', 'Ionic', 'Oracle', 'Angular'],
       videos: [
-        { label: 'Demo', src: '/assets/mobile-app-demo.mp4' }
+        { label: 'Demo', src: media1 }
       ],
       color: 'from-violet-500 to-purple-500',
     },
@@ -40,7 +40,7 @@ const ProjectsWindow: React.FC = () => {
       description: 'CV analysis & candidate shortlisting application with intelligent parsing and scoring algorithms',
       tech: ['NestJS', 'Angular', 'TypeScript'],
       videos: [
-        { label: 'Full Demo', src: '/assets/Automated-Resume-Screening-Candidate-Shortlisting-Web-App demo.mp4' }
+        { label: 'Full Demo', src: resumeScreeningDemo }
       ],
       color: 'from-primary to-accent',
     },
@@ -49,7 +49,7 @@ const ProjectsWindow: React.FC = () => {
       description: 'Complete hotel booking and management platform with real-time availability tracking',
       tech: ['Spring Boot', 'Thymeleaf', 'Oracle'],
       videos: [
-        { label: 'Demo', src: '/assets/hotel-demo.mp4' }
+        { label: 'Demo', src: media2 }
       ],
       color: 'from-amber-500 to-orange-500',
     },
@@ -57,9 +57,7 @@ const ProjectsWindow: React.FC = () => {
       title: 'Movie Playlist & Recommendation App',
       description: 'Personal movie tracker with smart recommendations powered by TMDB API integration',
       tech: ['Ionic', 'React', 'Firebase', 'TMDB API'],
-      videos: [
-        { label: 'Demo', src: '/assets/movie-app-demo.mp4' }
-      ],
+      videos: [],
       color: 'from-violet-500 to-purple-500',
     },
     {
@@ -67,16 +65,9 @@ const ProjectsWindow: React.FC = () => {
       description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
       tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
       videos: [
-        { label: 'Running Demo', src: '/assets/jmv runing demo.mp4' },
-        { label: 'Static Analysis', src: '/assets/demo application-static prj.mp4' }
+        { label: 'Running Demo', src: jvmRunningDemo },
+        { label: 'Static Analysis', src: staticProjectDemo }
       ],
-      color: 'from-violet-500 to-purple-500',
-    },
-        {
-      title: 'Full-stack web app for JVM static analysis',
-      description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
-      tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
-      videoUrl: 'demo',
       color: 'from-violet-500 to-purple-500',
     },
     {
