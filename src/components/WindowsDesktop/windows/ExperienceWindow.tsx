@@ -1,257 +1,93 @@
-import React, { useState } from 'react';
-import { Play, X, ExternalLink, Code2, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { Building2, Calendar, CheckCircle2, Briefcase } from 'lucide-react';
 
-interface ProjectVideo {
-  label: string;
-  src: string;
-}
-
-interface Project {
-  title: string;
-  description: string;
-  tech: string[];
-  videos?: ProjectVideo[];
-  color: string;
-}
-
-const ProjectsWindow: React.FC = () => {
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-  const projects: Project[] = [
-   {
-      title: 'Full-stack web app for JVM static analysis and real-time monitoring',
-      description: 'JVM metadata extraction and real-time monitoring dashboards (CPU, memory, GC)',
-      tech: ['Spring Boot', 'Oracle', 'Thymeleaf'],
-      videos: [
-        { label: 'real-time JVM monitoring', src: 'src/assets/jmv runing demo.mp4' },
-        { label: 'Static Analysis', src: 'src/assets/demo application-static prj.mp4' }
-      ],
-      color: 'from-violet-500 to-purple-500',
-    },
+const ExperienceWindow: React.FC = () => {
+  const experiences = [
     {
-      title: 'Mobile passport scanning With OCR integration Internship Project',
-      description: 'Hybrid mobile application development for passport scanning & OCR integration',
-      tech: ['Spring Boot', 'Ionic', 'Oracle', 'Angular'],
-      videos: [{ label: 'Demo', src: 'src/assets/media1.mp4' }],
-      color: 'from-violet-500 to-purple-500',
-    },
-    {
-      title: 'Automated Resume Screening System',
-      description: 'CV analysis & candidate shortlisting application with intelligent parsing and scoring algorithms',
-      tech: ['NestJS', 'Angular', 'TypeScript'],
-      videos: [
-        { label: 'Full Demo', src: 'src/assets/Automated-Resume-Screening-Candidate-Shortlisting-Web-App demo.mp4' }
-      ],
+      company: 'Mpsoft',
+      role: 'Full-Stack Developer Intern',
+      period: '07/2025 – 08/2025',
+      description: 'Full-stack web app for JVM static analysis',
       color: 'from-primary to-accent',
+      achievements: [
+        'Built with Spring Boot, Thymeleaf, Oracle',
+        'JVM metadata extraction',
+        'Real-time monitoring dashboards (CPU, memory, GC)',
+      ],
     },
     {
-      title: 'Hotel Reservation Management System',
-      description: 'Complete hotel booking and management platform with real-time availability tracking',
-      tech: ['Spring Boot', 'Thymeleaf', 'Oracle'],
-      videos: [
-        { label: 'Demo', src: '/assets/hotel-demo.mp4' }
-      ],
-      color: 'from-amber-500 to-orange-500',
-    },
-    {
-      title: 'Movie Playlist & Recommendation App',
-      description: 'Personal movie tracker with smart recommendations powered by TMDB API integration',
-      tech: ['Ionic', 'React', 'Firebase', 'TMDB API'],
-      videos: [
-        { label: 'Demo', src: '/assets/movzie-app-demo.mp4' }
-      ],
+      company: 'ArabSoft',
+      role: 'Mobile Developer Intern',
+      period: '03/2023 – 05/2023',
+      description: 'Hybrid mobile application development',
       color: 'from-violet-500 to-purple-500',
-    },
- 
-  
-    {
-      title: 'HR & Leave Management System',
-      description: 'Employee management with authentication, notifications, and approval workflows',
-      tech: ['NestJS', 'Angular', 'PostgreSQL'],
-      videos: [
-        { label: 'Running Demo', src: 'src/assezts/jmv runing demo.mp4' }
+      achievements: [
+        'Developed with Ionic + Angular',
+        'Spring Boot backend integration',
+        'Passport scanning & OCR integration',
       ],
-      color: 'from-emerald-500 to-teal-500',
+    },
+    {
+      company: 'Arab Tunisia Bank',
+      role: 'Web Developer Intern',
+      period: '08/2022 – 09/2022',
+      description: 'Server monitoring web application',
+      color: 'from-amber-500 to-orange-500',
+      achievements: [
+        'Built with Angular, Spring Boot, MySQL',
+        'CRUD operations implementation',
+        'Performance dashboards',
+      ],
     },
   ];
 
-  const openDemo = (project: Project) => {
-    setActiveProject(project);
-    setCurrentVideoIndex(0);
-  };
-
-  const closeModal = () => {
-    setActiveProject(null);
-    setCurrentVideoIndex(0);
-  };
-
-  const nextVideo = () => {
-    if (activeProject?.videos && currentVideoIndex < activeProject.videos.length - 1) {
-      setCurrentVideoIndex(prev => prev + 1);
-    }
-  };
-
-  const prevVideo = () => {
-    if (currentVideoIndex > 0) {
-      setCurrentVideoIndex(prev => prev - 1);
-    }
-  };
-
-  const hasVideos = (project: Project) => project.videos && project.videos.length > 0;
-
   return (
-    <div className="p-6 relative">
+    <div className="p-6">
       <h2 className="text-xl font-bold section-title mb-6 flex items-center gap-3">
-        <Code2 size={24} className="text-primary" />
-        My Projects
+        <Briefcase size={24} className="text-primary" />
+        Work Experience
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {projects.map((project, index) => (
+      <div className="space-y-5">
+        {experiences.map((exp, index) => (
           <div
             key={index}
-            className="glass-card p-5 group relative overflow-hidden"
+            className="glass-card p-5 relative overflow-hidden"
           >
             {/* Gradient accent bar */}
-            <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.color}`} />
+            <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${exp.color}`} />
             
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="font-semibold text-foreground text-sm leading-tight pr-2">
-                {project.title}
-              </h3>
-              {hasVideos(project) && (
-                <button 
-                  onClick={() => openDemo(project)}
-                  className="flex-shrink-0 p-2 bg-primary/20 rounded-full hover:bg-primary/30 transition-all group-hover:scale-110"
-                >
-                  <Play size={14} className="text-primary" fill="currentColor" />
-                </button>
-              )}
+            <div className="flex justify-between items-start mb-4">
+              <div className="flex items-start gap-4">
+                <div className={`w-12 h-12 bg-gradient-to-br ${exp.color} bg-opacity-20 rounded-xl flex items-center justify-center border border-white/10 flex-shrink-0`}>
+                  <Building2 size={22} className="text-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground text-base">{exp.company}</h3>
+                  <p className="text-sm text-muted-foreground">{exp.role}</p>
+                </div>
+              </div>
+              <span className="flex items-center gap-1.5 text-xs bg-secondary/80 text-foreground px-3 py-1.5 rounded-full font-medium">
+                <Calendar size={12} className="text-primary" />
+                {exp.period}
+              </span>
             </div>
             
-            <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-              {project.description}
-            </p>
+            <p className="text-sm text-foreground mb-4 pl-16">{exp.description}</p>
             
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span key={t} className="skill-badge text-[10px]">
-                  {t}
-                </span>
+            <div className="pl-16 space-y-2">
+              {exp.achievements.map((achievement, i) => (
+                <div key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                  <CheckCircle2 size={14} className="text-primary flex-shrink-0 mt-0.5" />
+                  <span>{achievement}</span>
+                </div>
               ))}
             </div>
-
-            {/* Demo Button */}
-            {hasVideos(project) && (
-              <button
-                onClick={() => openDemo(project)}
-                className="mt-4 w-full py-2 px-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg text-xs font-medium text-foreground hover:from-primary/30 hover:to-accent/30 transition-all flex items-center justify-center gap-2 border border-primary/20"
-              >
-                <Play size={12} className="text-primary" />
-                Watch Demo {project.videos && project.videos.length > 1 && `(${project.videos.length} videos)`}
-                <ExternalLink size={12} className="text-muted-foreground" />
-              </button>
-            )}
           </div>
         ))}
       </div>
-
-      {/* Video Modal */}
-      {activeProject && hasVideos(activeProject) && (
-        <div className="fixed inset-0 video-modal-overlay flex items-center justify-center z-50">
-          <div className="gradient-border max-w-4xl w-full mx-4">
-            <div className="bg-card rounded-xl overflow-hidden">
-              <div className="flex justify-between items-center p-4 border-b border-border">
-                <div>
-                  <h3 className="font-semibold text-foreground">{activeProject.title}</h3>
-                  <p className="text-xs text-muted-foreground">
-                    {activeProject.videos && activeProject.videos.length > 1 
-                      ? `${activeProject.videos[currentVideoIndex].label} (${currentVideoIndex + 1}/${activeProject.videos.length})`
-                      : 'Project Demo'
-                    }
-                  </p>
-                </div>
-                <button
-                  onClick={closeModal}
-                  className="p-2 hover:bg-destructive/20 rounded-lg transition-colors"
-                >
-                  <X size={20} className="text-muted-foreground" />
-                </button>
-              </div>
-              
-              {/* Video Player */}
-              <div className="relative bg-background">
-                <video 
-                  key={activeProject.videos![currentVideoIndex].src}
-                  className="w-full aspect-video"
-                  controls
-                  autoPlay
-                >
-                  <source src={activeProject.videos![currentVideoIndex].src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                {/* Navigation Arrows for Multiple Videos */}
-                {activeProject.videos && activeProject.videos.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevVideo}
-                      disabled={currentVideoIndex === 0}
-                      className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border transition-all ${
-                        currentVideoIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-primary/20'
-                      }`}
-                    >
-                      <ChevronLeft size={24} className="text-foreground" />
-                    </button>
-                    <button
-                      onClick={nextVideo}
-                      disabled={currentVideoIndex === activeProject.videos.length - 1}
-                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border transition-all ${
-                        currentVideoIndex === activeProject.videos.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-primary/20'
-                      }`}
-                    >
-                      <ChevronRight size={24} className="text-foreground" />
-                    </button>
-                  </>
-                )}
-              </div>
-
-              {/* Video Thumbnails/Tabs for Multiple Videos */}
-              {activeProject.videos && activeProject.videos.length > 1 && (
-                <div className="p-4 border-t border-border flex gap-2 overflow-x-auto">
-                  {activeProject.videos.map((video, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentVideoIndex(idx)}
-                      className={`px-4 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
-                        idx === currentVideoIndex
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                      }`}
-                    >
-                      {video.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {/* Tech Stack */}
-              <div className="p-4 border-t border-border">
-                <div className="flex flex-wrap justify-center gap-2">
-                  {activeProject.tech.map((t) => (
-                    <span key={t} className="skill-badge">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default ProjectsWindow;
+export default ExperienceWindow;
